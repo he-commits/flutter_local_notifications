@@ -782,6 +782,7 @@ class IOSFlutterLocalNotificationsPlugin
     Duration repeatDurationInterval, {
     DarwinNotificationDetails? notificationDetails,
     String? payload,
+    DateTime? startDateTime,
   }) async {
     validateId(id);
     validateRepeatDurationInterval(repeatDurationInterval);
@@ -790,7 +791,7 @@ class IOSFlutterLocalNotificationsPlugin
       'id': id,
       'title': title,
       'body': body,
-      'calledAt': clock.now().millisecondsSinceEpoch,
+      'calledAt': startDateTime.millisecondsSinceEpoch ?? clock.now().millisecondsSinceEpoch,
       'repeatIntervalMilliseconds': repeatDurationInterval.inMilliseconds,
       'platformSpecifics': notificationDetails?.toMap(),
       'payload': payload ?? ''
