@@ -427,6 +427,7 @@ class FlutterLocalNotificationsPlugin {
     NotificationDetails notificationDetails, {
     AndroidScheduleMode androidScheduleMode = AndroidScheduleMode.exact,
     String? payload,
+    DateTime? startDateTime,
   }) async {
     if (kIsWeb) {
       return;
@@ -444,7 +445,7 @@ class FlutterLocalNotificationsPlugin {
               IOSFlutterLocalNotificationsPlugin>()
           ?.periodicallyShowWithDuration(
               id, title, body, repeatDurationInterval,
-              notificationDetails: notificationDetails.iOS, payload: payload);
+              notificationDetails: notificationDetails.iOS, payload: payload, startDateTime: startDateTime);
     } else if (defaultTargetPlatform == TargetPlatform.macOS) {
       await resolvePlatformSpecificImplementation<
               MacOSFlutterLocalNotificationsPlugin>()
